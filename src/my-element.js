@@ -1,5 +1,13 @@
 import { LitElement, html, css } from "lit";
 import { data } from "./data";
+import "./assets/icons/sellIcon";
+import "./assets/icons/financeIcon";
+import "./assets/icons/shopIcon";
+import "./assets/icons/chatIcon";
+import "./assets/icons/moreIcon";
+import "./assets/icons/moreIcon";
+import "./assets/icons/attachMoneyIcon";
+import "./assets/icons/viewicon";
 
 export class MyElement extends LitElement {
   static get properties() {
@@ -39,6 +47,50 @@ export class MyElement extends LitElement {
     this.active = "";
   }
 
+  renderIcon(iconName) {
+    switch (iconName) {
+      case "sellIcon":
+        return html`<sell-icon color="#ffffff"></sell-icon>`;
+      case "attachMoneyIcon":
+        return html`<attach-icon color="#ffffff"></attach-icon>`;
+      default:
+        return "";
+    }
+  }
+
+
+  // connectedCallback() {
+  //   document.addEventListener("mousedown", this.handleClickOutside.bind(this));
+  //   super.connectedCallback();
+  // }
+
+  // disconnectedCallback() {
+  //   document.removeEventListener(
+  //     "mousedown",
+  //     this.handleClickOutside.bind(this)
+  //   );
+  //   super.disconnectedCallback();
+  // }
+
+  //  handleClickOutside(event) {
+  //   const drawer = this.shadowRoot.querySelector('.drawer');
+  //   const bottomContent = this.shadowRoot.querySelector('.bottom_content');
+  //   const navItems = this.shadowRoot.querySelectorAll('.nav-item');
+    
+  //   const isInsideDrawer = drawer.contains(event.target);
+  //   const isInsideBottomContent = bottomContent.contains(event.target);
+  //   const isInsideNavItem = Array.from(navItems).some(item => item.contains(event.target));
+
+  //   console.log("isInsideDrawer", isInsideDrawer)
+  //   console.log("isInsideBottomContent", isInsideBottomContent)
+  //   console.log("isInsideNavItem", isInsideNavItem)
+
+  //   if (!isInsideDrawer && !isInsideBottomContent && !isInsideNavItem) {
+  //     this.drawerOpen = false;
+  //     this.active = "";
+  //   }
+  // }
+
   render() {
     return html`
       <div class="containerV1">
@@ -47,9 +99,12 @@ export class MyElement extends LitElement {
           ${this.currenData.map(
             (option) => html`
               <div class="drawer-option" @click=${this.handleDrawerOptionClick}>
-                <span class="drawer-option-text"
-                  >${this.boldText(option.text)}</span
-                >
+                <div class="drawer-option-circle">
+                  ${this.renderIcon(option.icon)}
+                </div>
+                <span class="drawer-option-text">
+                  ${this.boldText(option.text)}
+                </span>
               </div>
             `
           )}
@@ -59,30 +114,45 @@ export class MyElement extends LitElement {
             class=${`nav-item ${this.active === "Sell/Trade" ? "active" : ""}`}
             @click=${() => this.selectOption("Sell/Trade")}
           >
+            <view-icon
+              color="${this.active === "Sell/Trade" ? "#005AB8" : "black"}"
+            ></view-icon>
             <span>Sell/Trade</span>
           </div>
           <div
             class=${`nav-item ${this.active === "Finance" ? "active" : ""}`}
             @click=${() => this.selectOption("Finance")}
           >
+            <finance-icon
+              color="${this.active === "Finance" ? "#005AB8" : "black"}"
+            ></finance-icon>
             <span>Finance</span>
           </div>
           <div
             class=${`nav-item ${this.active === "Shop" ? "active" : ""}`}
             @click=${() => this.selectOption("Shop")}
           >
+            <shop-icon
+              color="${this.active === "Shop" ? "#005AB8" : "black"}"
+            ></shop-icon>
             <span>Shop</span>
           </div>
           <div
             class=${`nav-item ${this.active === "Chat" ? "active" : ""}`}
             @click=${() => this.selectOption("Chat")}
           >
+            <chat-icon
+              color="${this.active === "Chat" ? "#005AB8" : "black"}"
+            ></chat-icon>
             <span>Chat</span>
           </div>
           <div
             class=${`nav-item ${this.active === "More" ? "active" : ""}`}
             @click=${() => this.selectOption("More")}
           >
+            <more-icon
+              color="${this.active === "More" ? "#005AB8" : "black"}"
+            ></more-icon>
             <span>More</span>
           </div>
         </div>
@@ -92,6 +162,16 @@ export class MyElement extends LitElement {
 
   static get styles() {
     return css`
+      .blur-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backdrop-filter: blur(5px);
+      background-color: rgba(0, 0, 0, 0.6);
+      }
+
       .containerV1 {
         font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         font-weight: 400;
@@ -102,8 +182,10 @@ export class MyElement extends LitElement {
         padding: 0 8px 8px 8px;
         right: 0;
         box-sizing: border-box;
-        
+
         .bottom_content {
+          font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+          font-weight: 400;
           background-color: white;
           box-sizing: border-box;
           color: black;
@@ -118,6 +200,8 @@ export class MyElement extends LitElement {
         }
 
         .nav-item {
+          font-family: sans-serif;
+          font-weight: 400;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -136,56 +220,28 @@ export class MyElement extends LitElement {
           &:last-child {
             padding-right: 8px;
           }
-
-          .chatIcon {
-            width: 22px;
-          }
         }
 
         .drawer-option-circle {
-          svg {
-            path {
-              fill: white;
-            }
-          }
+          background-color: #005AB8;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
         }
 
         .active {
-          color: blue;
-
-          svg {
-            path {
-              fill: blue;
-            }
-          }
-
-          .sellIcon {
-            animation: pulse 0.7s 1;
-          }
-
-          .financeIcon {
-            animation: spin 0.7s 1;
-          }
-
-          .shopIcon {
-            animation: pulse 0.7s 1;
-          }
-
-          .chatIcon {
-            animation: float 0.7s ease-in-out 1;
-          }
-
-          .moreIcon {
-            animation: pulse 0.7s 1;
-          }
+          color: #005ab8;
         }
 
         .active:after {
           background: linear-gradient(
             to right,
             transparent 15%,
-            blue 15%,
-            blue 85%,
+            #005ab8 15%,
+            #005ab8 85%,
             transparent 85%
           );
 
@@ -225,122 +281,44 @@ export class MyElement extends LitElement {
             box-sizing: border-box;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-
-            .drawer-circle {
-              background-color: blue;
-              width: 40px;
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 100%;
-
-              .svg {
-                width: 24px;
-                max-height: 24px;
-              }
-            }
-
-            
           }
-        }
-
-        .drawer-text {
-          color: black;
         }
 
         .drawer.expanded {
           display: block;
-          animation: slide-in-bottom 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-            both;
+          animation: slide-in-bottom 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           max-height: 100%;
         }
 
         .drawer.collapsed {
           display: block;
-          animation: slide-out-top 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-            both;
+          animation: slide-out-top 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;}
         }
 
+        @keyframes slide-in-bottom {
+          0% {
+            transform: translateY(var(25px)); 
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
         @keyframes slide-out-top {
           0% {
             transform: translateY(0);
             opacity: 1;
           }
-
           100% {
-            transform: translateY(25px);
+            transform: translateY(var(25px)); 
             opacity: 0;
           }
         }
+        
 
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
 
-          50% {
-            transform: scale(1.2);
-          }
-
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-
-          100% {
-            transform: rotate(180deg);
-          }
-        }
-
-        @keyframes float {
-          0% {
-            transform: translateY(0);
-          }
-
-          25% {
-            transform: translateY(-2px) rotate(10deg);
-          }
-
-          50% {
-            transform: translateY(-4px) rotate(-10deg);
-          }
-
-          100% {
-            transform: translateY(0) rotate(0deg);
-          }
-        }
-
-        @-webkit-keyframes slide-in-bottom {
-          0% {
-            -webkit-transform: translateY(25px);
-            transform: translateY(25px);
-            opacity: 0;
-          }
-
-          100% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes slide-in-bottom {
-          0% {
-            transform: translateY(25px);
-            opacity: 0;
-          }
-
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
       }
     `;
   }

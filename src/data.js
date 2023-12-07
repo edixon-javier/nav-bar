@@ -1,23 +1,25 @@
+
+
 export const data = {
   "Sell/Trade": {
     options: [
       {
-        icon: "BrowseIcon",
+        icon: "sellIcon",
         text: "Browse by category",
         url: "https://lit.dev/",
       },
       {
-        icon: "ViewAllIcon",
+        icon: "attachMoneyIcon",
         text: "View all inventory",
         url: "https://lit.dev/",
       },
       {
-        icon: "SellIcon",
+        icon: "sellIcon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
       {
-        icon: "AttachMoneyIcon",
+        icon: "attachMoneyIcon",
         text: "Find a store",
         url: "https://lit.dev/",
       },
@@ -26,12 +28,12 @@ export const data = {
   Finance: {
     options: [
       {
-        icon: "BrowseIcon",
+        icon: "sellIcon",
         text: "Browse by category",
         url: "https://lit.dev/",
       },
       {
-        icon: "ViewAllIcon",
+        icon: "attachMoneyIcon",
         text: "View all inventory",
         url: "https://lit.dev/",
       },
@@ -50,7 +52,7 @@ export const data = {
   Shop: {
     options: [
       {
-        icon: "BrowseIcon",
+        icon: "sellIcon",
         text: "Browse by category",
         url: "https://lit.dev/",
       },
@@ -74,17 +76,17 @@ export const data = {
   Chat: {
     options: [
       {
-        icon: "BrowseIcon",
+        icon: "sellIcon",
         text: "Browse by category",
         url: "https://lit.dev/",
       },
       {
-        icon: "ViewAllIcon",
+        icon: "attachMoneyIcon",
         text: "View all inventory",
         url: "https://lit.dev/",
       },
       {
-        icon: "SellIcon",
+        icon: "sellIcon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
@@ -98,22 +100,22 @@ export const data = {
   More: {
     options: [
       {
-        icon: "BrowseIcon",
+        icon: "sellIcon",
         text: "Browse by category",
         url: "https://lit.dev/",
       },
       {
-        icon: "ViewAllIcon",
+        icon: "attachMoneyIcon",
         text: "View all inventory",
         url: "https://lit.dev/",
       },
       {
-        icon: "SellIcon",
+        icon: "sellIcon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
       {
-        icon: "AttachMoneyIcon",
+        icon: "attachMoneyIcon",
         text: "Find a store",
         url: "https://lit.dev/",
       },
