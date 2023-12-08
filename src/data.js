@@ -14,12 +14,12 @@ export const data = {
         url: "https://lit.dev/",
       },
       {
-        icon: "sellIcon",
+        icon: "viewicon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
       {
-        icon: "attachMoneyIcon",
+        icon: "financeIcon",
         text: "Find a store",
         url: "https://lit.dev/",
       },
@@ -86,7 +86,7 @@ export const data = {
         url: "https://lit.dev/",
       },
       {
-        icon: "sellIcon",
+        icon: "financeIcon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
@@ -110,12 +110,12 @@ export const data = {
         url: "https://lit.dev/",
       },
       {
-        icon: "sellIcon",
+        icon: "viewicon",
         text: "Shop cars near me",
         url: "https://lit.dev/",
       },
       {
-        icon: "attachMoneyIcon",
+        icon: "financeIcon",
         text: "Find a store",
         url: "https://lit.dev/",
       },

@@ -1,17 +1,146 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edixon</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <script type="module" src="/src/my-element.js">
-      
-    </script>
-  </head>
-  <body>
-    <my-element >
-    </my-element>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edixon</title>
+  <link rel="stylesheet" href="./src/index.css" />
+  <script type="module" src="/src/my-element.js">
+
+  </script>
+</head>
+
+<body>
+  <script>
+    const data = {
+      "Sell/Trade": {
+        options: [
+          {
+            icon: "sellIcon",
+            text: "Browse by category",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "attachMoneyIcon",
+            text: "View all inventory",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "viewicon",
+            text: "Shop cars near me",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "financeIcon",
+            text: "Find a store",
+            url: "https://lit.dev/",
+          },
+        ],
+      },
+      Finance: {
+        options: [
+          {
+            icon: "sellIcon",
+            text: "Browse by category",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "attachMoneyIcon",
+            text: "View all inventory",
+            url: "https://lit.dev/",
+          },
+          // {
+          //     icon: "browser",
+          //     text: "Shop cars near me",
+          //     url: "https://lit.dev/"
+          // },
+          // {
+          //     icon: "browser",
+          //     text: "Find a store",
+          //     url: "https://lit.dev/"
+          // },
+        ],
+      },
+      Shop: {
+        options: [
+          {
+            icon: "sellIcon",
+            text: "Browse by category",
+            url: "https://lit.dev/",
+          },
+          // {
+          //     icon: "browser",
+          //     text: "View all inventory",
+          //     url: "https://lit.dev/"
+          // },
+          // {
+          //     icon: "browser",
+          //     text: "Shop cars near me",
+          //     url: "https://lit.dev/"
+          // },
+          // {
+          //     icon: "browser",
+          //     text: "Find a store",
+          //     url: "https://lit.dev/"
+          // },
+        ],
+      },
+      Chat: {
+        options: [
+          {
+            icon: "sellIcon",
+            text: "Browse by category",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "attachMoneyIcon",
+            text: "View all inventory",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "financeIcon",
+            text: "Shop cars near me",
+            url: "https://lit.dev/",
+          },
+          // {
+          //     icon: "browser",
+          //     text: "Find a store",
+          //     url: "https://lit.dev/"
+          // },
+        ],
+      },
+      More: {
+        options: [
+          {
+            icon: "sellIcon",
+            text: "Browse by category",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "attachMoneyIcon",
+            text: "View all inventory",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "viewicon",
+            text: "Shop cars near me",
+            url: "https://lit.dev/",
+          },
+          {
+            icon: "financeIcon",
+            text: "Find a store",
+            url: "https://lit.dev/",
+          },
+        ],
+      },
+    }
+  </script>
+  
+  <my-element .currenData="${data}"></my-element>
+
+  <script type="module" src="/src/my-element.js"></script>
+</body>
+
 </html>

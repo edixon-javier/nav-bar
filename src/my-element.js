@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit";
-import { data } from "./data";
 import "./assets/icons/sellIcon";
 import "./assets/icons/financeIcon";
 import "./assets/icons/shopIcon";
@@ -53,44 +52,44 @@ export class MyElement extends LitElement {
         return html`<sell-icon color="#ffffff"></sell-icon>`;
       case "attachMoneyIcon":
         return html`<attach-icon color="#ffffff"></attach-icon>`;
+      case "viewicon":
+        return html` <view-icon color="#ffffff"></view-icon>`;
+      case "financeIcon":
+        return html` <finance-icon color="#ffffff"></finance-icon>`;
       default:
         return "";
     }
   }
 
+  connectedCallback() {
+    document.addEventListener("mousedown", this.handleClickOutside.bind(this));
+    super.connectedCallback();
+  }
 
-  // connectedCallback() {
-  //   document.addEventListener("mousedown", this.handleClickOutside.bind(this));
-  //   super.connectedCallback();
-  // }
+  disconnectedCallback() {
+    document.removeEventListener(
+      "mousedown",
+      this.handleClickOutside.bind(this)
+    );
+    super.disconnectedCallback();
+  }
 
-  // disconnectedCallback() {
-  //   document.removeEventListener(
-  //     "mousedown",
-  //     this.handleClickOutside.bind(this)
-  //   );
-  //   super.disconnectedCallback();
-  // }
+  handleClickOutside(event) {
+    if (this.drawerOpen) {
+      const path = event.composedPath();
+      const drawer = this.shadowRoot.querySelector(".drawer");
+      const bottomContent = this.shadowRoot.querySelector(".bottom_content");
 
-  //  handleClickOutside(event) {
-  //   const drawer = this.shadowRoot.querySelector('.drawer');
-  //   const bottomContent = this.shadowRoot.querySelector('.bottom_content');
-  //   const navItems = this.shadowRoot.querySelectorAll('.nav-item');
-    
-  //   const isInsideDrawer = drawer.contains(event.target);
-  //   const isInsideBottomContent = bottomContent.contains(event.target);
-  //   const isInsideNavItem = Array.from(navItems).some(item => item.contains(event.target));
+      const clickedInsideDrawer = drawer && path.includes(drawer);
+      const clickedInsideBottomContent =
+        bottomContent && path.includes(bottomContent);
 
-  //   console.log("isInsideDrawer", isInsideDrawer)
-  //   console.log("isInsideBottomContent", isInsideBottomContent)
-  //   console.log("isInsideNavItem", isInsideNavItem)
-
-  //   if (!isInsideDrawer && !isInsideBottomContent && !isInsideNavItem) {
-  //     this.drawerOpen = false;
-  //     this.active = "";
-  //   }
-  // }
-
+      if (!clickedInsideDrawer && !clickedInsideBottomContent) {
+        this.drawerOpen = false;
+        this.active = "";
+      }
+    }
+  }
   render() {
     return html`
       <div class="containerV1">
@@ -173,7 +172,7 @@ export class MyElement extends LitElement {
       }
 
       .containerV1 {
-        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        font-family: sans-serif;
         font-weight: 400;
         width: 100%;
         position: fixed;
@@ -184,11 +183,11 @@ export class MyElement extends LitElement {
         box-sizing: border-box;
 
         .bottom_content {
-          font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+          font-family: sans-serif;
           font-weight: 400;
-          background-color: white;
+          background-color: #ffffff;
           box-sizing: border-box;
-          color: black;
+          color: #2A343D;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -254,9 +253,10 @@ export class MyElement extends LitElement {
         }
 
         .drawer {
-          background-color: white;
+          background-color: #ffffff;
           box-sizing: border-box;
-          color: black;
+          color: #2A343D;
+          font-family: sans-serif;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -286,7 +286,7 @@ export class MyElement extends LitElement {
 
         .drawer.expanded {
           display: block;
-          animation: slide-in-bottom 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
           max-height: 100%;
         }
 
@@ -297,7 +297,7 @@ export class MyElement extends LitElement {
 
         @keyframes slide-in-bottom {
           0% {
-            transform: translateY(var(25px)); 
+            transform: translateY(25px); 
             opacity: 0;
           }
           100% {
@@ -311,14 +311,12 @@ export class MyElement extends LitElement {
             transform: translateY(0);
             opacity: 1;
           }
+      
           100% {
-            transform: translateY(var(25px)); 
+            transform: translateY(25px);
             opacity: 0;
           }
         }
-        
-
-
       }
     `;
   }

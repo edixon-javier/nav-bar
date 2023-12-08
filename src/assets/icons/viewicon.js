@@ -16,7 +16,7 @@ export class viewicon extends LitElement {
     return html`
       <svg
         class=${this.color === "#005AB8" ? "show active" : ""}
-        width="25"
+        width="24"
         height="24"
         viewBox="0 0 25 24"
         fill="none"
@@ -28,7 +28,7 @@ export class viewicon extends LitElement {
         />
         <path
           d="M7.19824 8.0025C8.02667 8.0025 8.69824 7.33093 8.69824 6.5025C8.69824 5.67408 8.02667 5.0025 7.19824 5.0025C6.36982 5.0025 5.69824 5.67408 5.69824 6.5025C5.69824 7.33093 6.36982 8.0025 7.19824 8.0025Z"
-          fill="#2A343D"
+          fill="${this.color}"
         />
       </svg>
     `;
